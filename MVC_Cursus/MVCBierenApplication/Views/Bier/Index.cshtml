@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model List<MVCBierenApplication.Models.Bier>
+<h2>Index</h2>
+@foreach(var bier in Model)
+{
+    <p>@bier.Naam heeft een alcoholpercentage van @bier.Alcohol %.</p>
+}
+

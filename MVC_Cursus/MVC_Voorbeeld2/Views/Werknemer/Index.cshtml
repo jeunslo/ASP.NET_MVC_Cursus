@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+Het resultaat van (1+2*5+0.5) is @(1 + 2 * 5 + 0.5)
+
+@for (var teller = 0; teller < 10; teller++)
+{
+    <p>@teller</p>
+}
+
+<h2>Countdown</h2>
+@{
+    var getal = 10;
+    while (getal > 0)
+    {
+        <p>@getal</p>
+        getal--;
+    }
+}
+
+@if (new Random().Next(1, 11) == 7)
+{
+    <text>Het is zeven</text>
+    @: Je hebt geluk
+}
+else
+{
+    <text>Het is geen zeven</text>
+    @: Een andere keer misschien
+}
+
+@{ var a = 0;
+    var b = 1;
+    var temp = 0;
+    <p></p>
+    @:@a, @b, 
+    for (var teller = 0; teller < 10; teller++)
+    {
+        temp = b;
+        b += a;
+        @: @b,
+        a = temp;
+    }
+    @:...
+}
+

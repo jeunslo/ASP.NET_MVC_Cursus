@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MVC_Voorbeeld2.Models.Werknemer>
+
+@{
+    ViewBag.Title = "AlleWerknemers";
+}
+
+<h2>AlleWerknemers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Voornaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wedde)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InDienst)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Voornaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Wedde)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InDienst)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
