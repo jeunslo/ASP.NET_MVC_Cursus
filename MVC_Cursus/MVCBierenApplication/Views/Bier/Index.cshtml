@@ -4,9 +4,18 @@
 }
 
 @model List<MVCBierenApplication.Models.Bier>
-<h2>Index</h2>
-@foreach(var bier in Model)
-{
-    <p>@bier.Naam heeft een alcoholpercentage van @bier.Alcohol %.</p>
-}
+<h2>Alle bieren</h2>
+
+    @foreach (var bier in Model)
+    {
+        <p>
+            @Html.DisplayFor(m => bier.ID)
+            @bier.Naam
+            @Html.DisplayFor(m => bier.Alcohol).
+            <a href="@Url.Action("Verwijderen", "Bier", new { ID= bier.ID})"><img src="~/Images/delete.png"></a>
+            
+        </p>
+    }
+
+
 

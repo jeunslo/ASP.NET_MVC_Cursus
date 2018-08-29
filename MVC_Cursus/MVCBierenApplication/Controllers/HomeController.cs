@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MVCBierenApplication.Models;
+using MVCBierenApplication.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,7 @@ namespace MVCBierenApplication.Controllers
 {
     public class HomeController : Controller
     {
+       
         public ActionResult Index()
         {
             return View();

@@ -1,0 +1,10 @@
+﻿@model List<MVC_Voorbeeld3.Models.Filiaal>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.Partial("HoofdZetel")
+@Html.Partial("Filialen")
+@Html.Partial("FilialenVanaf2Miljoen", Model.Where(m=>m.Waarde >= 2000000))
+@Html.Action("ShowTime", "Time")

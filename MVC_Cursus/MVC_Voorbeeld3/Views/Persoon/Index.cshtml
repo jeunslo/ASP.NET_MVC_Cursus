@@ -1,0 +1,87 @@
+﻿@model IEnumerable<MVC_Voorbeeld3.Models.Persoon>
+
+@{
+    ViewBag.Title = "Personen";
+}
+
+<h2>Personen</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voornaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Familienaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Wedde)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paswoord)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Geboren)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gehuwd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opmerkingen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Geslacht)
+            </th>
+            <th>Verwijderen</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voornaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Familienaam)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Score)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wedde)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paswoord)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Geboren)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gehuwd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opmerkingen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Geslacht)
+                </td>
+                <td>
+                    <a href="@Url.Action("VerwijderForm", "Persoon", new { ID=item.ID})"><img src="~/Images/delete.png" alt="delete"></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

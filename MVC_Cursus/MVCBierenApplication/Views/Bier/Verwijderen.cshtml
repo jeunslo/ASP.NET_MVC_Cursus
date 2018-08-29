@@ -1,0 +1,11 @@
+﻿@model MVCBierenApplication.Models.Bier
+
+@{
+    ViewBag.Title = "Verwijderen";
+}
+
+<h2>@Model.Naam verwijderen?</h2>
+<form method="post" action="@Url.Action("verwijderd", "Bier", new { ID = Model.ID })">
+    <input type="submit" />
+</form>
+

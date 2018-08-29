@@ -1,0 +1,19 @@
+﻿@model IEnumerable<MVC_Voorbeeld3.Models.Filiaal>
+<h2>Filialen</h2>
+<ul>
+    @foreach (var filiaal in Model)
+    {
+        //var url = "Verwijderen/" + filiaal.ID;
+        var url = Url.Action("Verwijderen", "Filiaal", new { ID = filiaal.ID });
+        <li>@filiaal.ID 
+            @filiaal.Naam 
+            @MyHelpers.Milieuscore(filiaal.Gebouwd) 
+            @(string.Format("{0:yyyy}", filiaal.Gebouwd)) 
+            @Html.DisplayFor(m=>filiaal.Gebouwd) 
+            @Html.DisplayFor(m=>filiaal.Waarde) @Html.DisplayFor(m=>filiaal.Eigenaar)
+            @Html.ActionLink("Verwijderen","Verwijderen", new { ID = filiaal.ID })
+            <a href="@url"><img src="~/Images/delete.png" alt="delete"/></a>
+            @*@(string.Format("{0:#,##0.00}", filiaal.Waarde))*@</li>
+        @*<a href="@url">Verwijderen</a>*@
+    }
+</ul>

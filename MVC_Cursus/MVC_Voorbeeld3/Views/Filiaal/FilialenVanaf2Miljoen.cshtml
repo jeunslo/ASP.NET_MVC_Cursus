@@ -1,0 +1,8 @@
+﻿@model  IEnumerable<MVC_Voorbeeld3.Models.Filiaal>
+    <h2>Onze filialen met waarde vanaf 2 miljoen</h2>
+<ul>
+    @foreach (var filiaal in Model)
+    {
+        <li>@filiaal.ID  @filiaal.Naam</li>
+    }
+</ul>
