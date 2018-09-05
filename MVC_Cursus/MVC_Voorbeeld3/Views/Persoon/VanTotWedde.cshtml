@@ -1,0 +1,29 @@
+﻿@model MVC_Voorbeeld3.Models.VanTotWeddeViewModel
+
+@{
+    ViewBag.Title = "VanTotWedde";
+}
+
+<h2>VanTotWedde</h2>
+@using (Html.BeginForm("VanTotWeddeResultaat", "Persoon", FormMethod.Get))
+{
+    @Html.LabelFor(m => m.VanWedde)
+    @Html.ValidationMessageFor(m => m.VanWedde, "*")
+    @Html.TextBoxFor(m => m.VanWedde)
+    @Html.LabelFor(m => m.TotWedde)
+    @Html.ValidationMessageFor(m => m.TotWedde, "*")
+    @Html.TextBoxFor(m => m.TotWedde)
+    <input type="submit" value="Zoeken" />
+}
+
+@if(Model.Personen != null)
+{
+    <ul>
+        @foreach (var x in Model.Personen)
+        {
+            <li>@x.Voornaam @x.Familienaam @x.Wedde</li>
+        }
+    </ul>
+}
+
+@Html.ValidationSummary()

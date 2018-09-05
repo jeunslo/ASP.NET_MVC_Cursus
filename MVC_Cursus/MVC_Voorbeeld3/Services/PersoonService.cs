@@ -42,5 +42,29 @@ namespace MVC_Voorbeeld3.Services
         {
             personen.Remove(id);
         }
+
+        public void Opslag(decimal vanWedde, decimal totWedde, decimal percentage)
+        {
+            foreach (var p in (from persoon in personen.Values where persoon.Wedde >= vanWedde && persoon.Wedde <= totWedde select persoon))
+            {
+                p.Wedde += p.Wedde * percentage / 100;
+            }
+        }
+
+        public List<Persoon> VanTotWedde(decimal van, decimal tot)
+        {
+            return (from x in personen.Values where x.Wedde >= van && x.Wedde <= tot orderby x.Wedde select x).ToList();
+        }
+
+        public void Add(Persoon p)
+        {
+            p.ID = personen.Keys.Max() + 1;
+            personen.Add(p.ID, p);
+        }
+
+        public void Update(Persoon p)
+        {
+            personen[p.ID] = p;
+        }
     }
 }

@@ -41,47 +41,53 @@
                 @Html.DisplayNameFor(model => model.Geslacht)
             </th>
             <th>Verwijderen</th>
+            <th>Wijzigen</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Voornaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Familienaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Score)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Wedde)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Paswoord)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Geboren)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Gehuwd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Opmerkingen)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Geslacht)
-                </td>
-                <td>
-                    <a href="@Url.Action("VerwijderForm", "Persoon", new { ID=item.ID})"><img src="~/Images/delete.png" alt="delete"></a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voornaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Familienaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wedde)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paswoord)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Geboren)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gehuwd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opmerkingen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Geslacht)
+            </td>
+            <td>
+                <a href="@Url.Action("VerwijderForm", "Persoon", new { ID=item.ID})"><img src="~/Images/delete.png" alt="delete"></a>
+            </td>
+            <td>
+                <a href="@Url.Action("EditForm", "Persoon", new { ID=item.ID})"><img src="~/Images/edit.png" alt="edit"></a>
+            </td>
+        </tr>
         }
     </tbody>
 
 </table>
+@Html.ActionLink("Opslag", "Opslag", "Persoon", null, new { @class="btn btn-primary" })
+@Html.ActionLink("Persoon toevoegen", "Toevoegen", "Persoon", null, new { @class = "btn btn-primary"})

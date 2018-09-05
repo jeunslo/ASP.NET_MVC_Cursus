@@ -1,21 +1,46 @@
-﻿
+﻿@model IEnumerable<MVCBierenApplication.Models.Bier>
+
 @{
     ViewBag.Title = "Index";
 }
 
-@model List<MVCBierenApplication.Models.Bier>
-<h2>Alle bieren</h2>
+<h2>Index</h2>
 
-    @foreach (var bier in Model)
-    {
-        <p>
-            @Html.DisplayFor(m => bier.ID)
-            @bier.Naam
-            @Html.DisplayFor(m => bier.Alcohol).
-            <a href="@Url.Action("Verwijderen", "Bier", new { ID= bier.ID})"><img src="~/Images/delete.png"></a>
-            
-        </p>
-    }
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alcohol)
+        </th>
+        <th></th>
+    </tr>
 
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naam)
+        </td>
+        <td>
+            @if (item.Alcohol != null)
+            {
+                @Html.DisplayFor(modelItem => item.Alcohol)
+            }
+            else
+            {
+                <span>Niet gekend</span>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BierNr }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BierNr }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BierNr })
+        </td>
+    </tr>
+}
 
-
+</table>

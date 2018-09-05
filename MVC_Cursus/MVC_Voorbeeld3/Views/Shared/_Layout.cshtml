@@ -23,6 +23,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Filiaal", "Index", "Filiaal")</li>
                     <li>@Html.ActionLink("Personen", "Index", "Persoon")</li>
+                    <li>@Html.ActionLink("Zoek persoon op wedde", "VanTotWedde", "Persoon")</li>
                 </ul>
             </div>
         </div>
@@ -36,6 +37,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

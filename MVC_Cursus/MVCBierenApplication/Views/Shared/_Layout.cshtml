@@ -8,14 +8,33 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <img src="~/Images/biertempel.png" alt="logo"/>
+    <img src="~/Images/biertempel.png" alt="logo" />
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Bier", "Index", "Bier")</li>
+                    <li>@Html.ActionLink("Soort", "Index", "Soort")</li>
+                    <li>@Html.ActionLink("Brouwer", "Index", "Brouwer")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
             @if (ViewBag.Adres != null)
             {
-            <p>- @ViewBag.Adres.Naam - @ViewBag.Adres.Straat @ViewBag.Adres.HuisNr - @ViewBag.Adres.PostCode @ViewBag.Adres.Gemeente - tel. @ViewBag.Adres.TelefoonNr - email: @ViewBag.Adres.EMail -</p>
+                <p>- @ViewBag.Adres.Naam - @ViewBag.Adres.Straat @ViewBag.Adres.HuisNr - @ViewBag.Adres.PostCode @ViewBag.Adres.Gemeente - tel. @ViewBag.Adres.TelefoonNr - email: @ViewBag.Adres.EMail -</p>
             }
         </footer>
     </div>
