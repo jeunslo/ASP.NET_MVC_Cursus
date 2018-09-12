@@ -1,0 +1,83 @@
+﻿@model MVC_Cultuurhuis.Models.Voorstelling
+
+@{
+    ViewBag.Title = "Reserveren";
+}
+
+<div class="jumbotron">
+    <h1>Het Cultuurhuis <img src="~/Images/reserveren.png" /></h1>
+    <p><a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg">Tickets kiezen &raquo;</a></p>
+</div>
+<div class="lead alert alert-info">
+    <p>Aantal tickets voor deze voorstelling</p>
+</div>
+
+@using (Html.BeginForm("Reserveer", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.VoorstellingsNr)
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Titel, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Titel, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Uitvoerders, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Uitvoerders, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Datum, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Datum, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Prijs, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Prijs, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.VrijePlaatsen, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.VrijePlaatsen, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Plaatsen", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @if (Session[Model.VoorstellingsNr.ToString()] != null)
+            {
+                uint getal = uint.Parse(Session[Model.VoorstellingsNr.ToString()].ToString());
+                <input value="@getal" required="required" min="1" type="number" max="@Model.VrijePlaatsen" name="aantalPlaatsen" class="form-control" />
+            }
+            else
+            {
+                <input value="1" required="required" min="1" type="number" max="@Model.VrijePlaatsen" name="aantalPlaatsen" class="form-control" />
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Reserveren" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+    }
+
+    @*@section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }*@

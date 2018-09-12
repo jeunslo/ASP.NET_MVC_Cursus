@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MVC_Tuincentrum.Models.Plant>
+
+@{
+    ViewBag.Title = "PrijsLijst";
+}
+
+<h2>PrijsLijst</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VerkoopPrijs) (BTW @ViewBag.btw)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naam)
+        </td>
+        <td>
+            @if (ViewBag.btw == "inclusief")
+            {
+                decimal prijs = item.VerkoopPrijs * 1.21m;
+                @Html.DisplayFor(modelItem => prijs)
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.VerkoopPrijs)
+            }
+        </td>
+    </tr>
+}
+
+</table>

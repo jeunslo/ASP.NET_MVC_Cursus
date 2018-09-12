@@ -123,5 +123,23 @@ namespace MVC_Tuincentrum.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult ZoekForm()
+        {
+            return View(new ZoekSoortViewModel());
+        }
+
+        public ViewResult BeginNaam(ZoekSoortViewModel form)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var query = (from soort in db.Soorten
+                            where soort.Naam.StartsWith(form.beginNaam)
+                            orderby soort.Naam
+                            select soort).ToList();
+                form.Soorten = query;
+            }
+            return View("ZoekForm", form);
+        }
     }
 }

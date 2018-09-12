@@ -1,0 +1,46 @@
+﻿@model MVC_Security.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "UserDetail2";
+}
+
+<h2>Detail van de user <i>@Model.UserName</i></h2>
+
+
+<h3>Roles: </h3>
+<hr />
+@if (Model.Roles.Count != 0)
+{
+    <div>
+        <dl class="dl-horizontal">
+            @foreach (var role in Model.Roles)
+            {
+                <dt>
+                    Id
+                </dt>
+                <dd>
+                    @role.RoleId
+                </dd>
+                <dt>
+                    Rolename
+                </dt>
+                <dd>
+                    @role.ToString()
+                </dd>
+                <dt>
+                    Delete role for user
+                </dt>
+                <dd>
+                    <a href='@Url.Action("VerwijderRoleForMember", new { userid = Model.Id, roleid = role.RoleId })'>
+                        <img src="~/Images/delete.png" alt="verwijderen" />
+                    </a>
+                </dd>
+            }
+        </dl>
+    </div>
+}
+else
+{
+    <p>User @Model.UserName behoort tot geen enkele rol.</p>
+}
+@Html.ActionLink("Terug naar userbeheer", "Userbeheer", null, new { @class = "btn btn-default" }) 

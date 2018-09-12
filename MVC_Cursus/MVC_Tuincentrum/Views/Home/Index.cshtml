@@ -7,7 +7,8 @@
     <p class="lead">De tuincentrum-website is een voorbeeld website uit de .NET MVC cursus.</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Meer over MVC &raquo;</a></p>
 </div>
-
+<a href="@Url.RouteUrl("AllePlanten")" class="btn btn-default">Alle planten</a>
+<a href="@Url.RouteUrl("PlantenVanEenLeverancier", new { levnr = 3})" class="btn btn-default">Plantenlijst van een leverancier</a>
 <div class="row">
     <div class="col-md-4">
         <h2>@Html.ActionLink(Resources.Teksten.Planten, "Index", "Plant")</h2>

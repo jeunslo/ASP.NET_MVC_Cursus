@@ -1,0 +1,78 @@
+﻿@model MVC_Cultuurhuis.Models.HomeIndexViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Het Cultuurhuis <img src="~/Images/voorstellingen.png" /></h1>
+</div>
+
+@if (Model.Genre == null)
+{
+    <br />
+    <div class="lead alert alert-info">
+        <p>Kies een voorstellingsgenre</p>
+    </div>
+}
+<br />
+
+<ul class="nav nav-pills">
+    @foreach (var item in Model.GenreList)
+    {
+        var url = Url.Action("Index", "Home", new { id = item.GenreNr });
+        if (Model.Genre == item)
+        {
+            <li role="presentation" class="active"><a href="@url">@item.GenreNaam</a></li>
+        }
+        else
+        {
+            <li role="presentation"><a href="@url">@item.GenreNaam</a></li>
+        }
+    }
+</ul>
+
+<br />
+@if (Model.Genre != null)
+{
+    if (Model.VoorstellingsList.Count != 0)
+    {
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Titel</th>
+                        <th>Uitvoerders</th>
+                        <th>Prijs</th>
+                        <th>Vrije plaatsen</th>
+                        <th>Reserveren</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.VoorstellingsList)
+                    {
+                    <tr>
+                        <td>@item.Datum</td>
+                        <td>@item.Titel</td>
+                        <td>@item.Uitvoerders</td>
+                        <td>@Html.DisplayFor(x => item.Prijs)</td>
+                        <td>@item.VrijePlaatsen</td>
+                        @if (item.VrijePlaatsen == 0)
+                        {
+                            <td><label class="label label-danger">uitverkocht</label></td>
+                        }
+                        else
+                        {
+                            <td>@Html.ActionLink("Reserveren", "Reserveren", new { id = item.VoorstellingsNr })</td>
+                        }
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="lead alert alert-warning">Er zijn geen voorstellingen van dit genre beschikbaar.</div>
+    }
+}

@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-3 col-sm-6">
+        <h2>@Html.ActionLink("Studenten", "Index", "Student")</h2>
+        <p>
+            <a class="btn btn-default" href="~/Student">Naar de pagina voor studenten &raquo;</a>
+        </p>
+    </div>
+    <div class="col-md-3 hidden-sm">
+        <h2>@Html.ActionLink("Leraren", "Index", "Leraar")</h2>
+        <p><a class="btn btn-default" href="~/Leraar">Naar de pagina voor leraren &raquo;</a></p>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <h2>@Html.ActionLink("User administrators", "Index", "User")</h2>
+        <p><a class="btn btn-default" href="~/User">Naar de pagina voor user admins &raquo;</a></p>
+    </div>
+</div>
+
+<div>
+    <ul class="nav nav-tabs">
+        <li><a>Home</a></li>
+        <li><a>About</a></li>
+        <li><a>Contact</a></li>
+    </ul>
+</div>
+<ol class="breadcrumb">
+    <li><a href="#">VDAB</a></li>
+    <li><a href="#">IT Opleidingen</a></li>
+    <li class="active">Ontwikkelaar met C#</li>
+</ol>
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Links</th>
+                    <th>Rechts</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Linksboven</td><td>Rechtsboven</td></tr>
+                <tr><td>Linksonder</td><td>Rechtsonder</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MVCBierenSecurityAPP.Models.Bieren>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Alcohol)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naam)
+        </td>
+        <td>
+            @if (item.Alcohol != null)
+            {
+                @Html.DisplayFor(modelItem => item.Alcohol)
+            }
+            else
+            {
+                <span>Niet gekend</span>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BierNr }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BierNr }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BierNr })
+        </td>
+    </tr>
+}
+
+</table>

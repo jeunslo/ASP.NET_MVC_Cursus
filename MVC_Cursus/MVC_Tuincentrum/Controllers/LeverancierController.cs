@@ -10,6 +10,7 @@ using MVC_Tuincentrum.Models;
 
 namespace MVC_Tuincentrum.Controllers
 {
+    [OverrideActionFilters]
     public class LeverancierController : Controller
     {
         private MVCTuinCentrumEntities db = new MVCTuinCentrumEntities();
@@ -122,6 +123,20 @@ namespace MVC_Tuincentrum.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [Route("Leveranciers/{postnr?}")]
+        public ActionResult FindLeveranciersMetPostNr(string postnr)
+        {
+            if (postnr == null)
+                return View("Index", db.Leveranciers.ToList());
+            else
+            {
+                List<Leverancier> leveranciersLijst = new List<Leverancier>();
+                leveranciersLijst = (from leverancier in db.Leveranciers where leverancier.PostNr == postnr select leverancier).ToList();
+                ViewBag.postnr = postnr;
+                return View(leveranciersLijst);
+            }
         }
     }
 }

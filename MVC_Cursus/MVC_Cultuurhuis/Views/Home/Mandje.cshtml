@@ -1,0 +1,93 @@
+﻿@model IEnumerable<MVC_Cultuurhuis.Models.Voorstelling>
+
+@{
+    ViewBag.Title = "Mandje";
+}
+
+<div class="jumbotron">
+    <h1>Het Cultuurhuis <img src="~/Images/mandje.png" /></h1>
+    <p>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg">Tickets kiezen &raquo;</a>
+        <a href="@Url.Action("Kassa", "Home")" class="btn btn-primary btn-lg">Kassa &raquo;</a>
+    </p>
+</div>
+<div class="lead alert alert-info">
+    <p>Inhoud van uw winkelmandje</p>
+</div>
+@using (Html.BeginForm("VerwijderVoorstellingMandje", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Datum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titel)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Uitvoerders)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prijs)
+                </th>
+                <th>
+                    Plaatsen
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Uitvoerders)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prijs)
+
+                    </td>
+                    <td>
+                        @Session[item.VoorstellingsNr.ToString()]
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="checkbox" value="@item.VoorstellingsNr" />
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="form-group">
+                        <input type="submit" value="Selectie verwijderen" />
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+}
+    <div class="lead alert alert-info">
+        @foreach (var item in Model)
+        {
+            ViewBag.Prijs = ViewBag.Prijs + item.Prijs;
+        }
+        <p>Te betalen: @ViewBag.Prijs</p>
+    </div>
