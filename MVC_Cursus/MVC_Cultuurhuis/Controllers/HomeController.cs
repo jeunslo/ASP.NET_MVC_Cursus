@@ -11,7 +11,7 @@ namespace MVC_Cultuurhuis.Controllers
     public class HomeController : Controller
     {
         public CultuurServices cultuurService = new CultuurServices();
-        
+
         public ActionResult Index(int? id)
         {
             var vm = new HomeIndexViewModel();
@@ -66,8 +66,34 @@ namespace MVC_Cultuurhuis.Controllers
 
         public ActionResult Mandje()
         {
+            List<Voorstelling> voorstellingenList = GetVoorstellingFromSession();
+            ViewBag.Prijs = 0;
+            return View(voorstellingenList);
+        }
+
+        [HttpPost]
+        public ActionResult VerwijderVoorstellingMandje(FormCollection form)
+        {
+            if (form != null)
+            {
+                foreach (var item in form.AllKeys)
+                {
+                    int number;
+                    if (int.TryParse(item, out number))
+                    {
+                        Session.Remove(number.ToString());
+                    }
+                }
+            }
+            List<Voorstelling> voorstellingenList = GetVoorstellingFromSession();
+            ViewBag.Prijs = 0;
+            return View("Mandje", voorstellingenList);
+        }
+
+        private List<Voorstelling> GetVoorstellingFromSession()
+        {
             List<Voorstelling> voorstellingenList = new List<Voorstelling>();
-            foreach(string number in Session)
+            foreach (string number in Session)
             {
                 int voorstellingsNr;
                 if (int.TryParse(number, out voorstellingsNr))
@@ -76,20 +102,9 @@ namespace MVC_Cultuurhuis.Controllers
                     voorstellingenList.Add(voorstelling);
                 }
             }
-            return View(voorstellingenList);
+            return voorstellingenList;
         }
 
-        [HttpPost]
-        public ActionResult VerwijderVoorstellingMandje(IEnumerable<int> toDeleteList)
-        {
-            if ((toDeleteList.Count() != 0) && (toDeleteList.Count() != null))
-            {
-                foreach (var item in toDeleteList)
-                {
-                    Session[item.ToString()] = null;
-                }
-            }
-            return RedirectToAction("Mandje", "Home");
-        }
+
     }
 }

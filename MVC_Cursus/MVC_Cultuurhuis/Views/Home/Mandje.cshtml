@@ -1,4 +1,12 @@
 ﻿@model IEnumerable<MVC_Cultuurhuis.Models.Voorstelling>
+@helper decimalDisplay(decimal prijs)
+    {
+        var formatProvider = new System.Globalization.CultureInfo("nl-BE");
+        formatProvider.NumberFormat.CurrencyPositivePattern = 2;
+        formatProvider.NumberFormat.CurrencyNegativePattern = 2;
+        formatProvider.NumberFormat.CurrencyDecimalSeparator = ",";
+        <span>@prijs.ToString("C", formatProvider)</span>
+}
 
 @{
     ViewBag.Title = "Mandje";
@@ -17,7 +25,7 @@
 @using (Html.BeginForm("VerwijderVoorstellingMandje", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <table class="table">
         <thead>
             <tr>
@@ -61,7 +69,7 @@
                     </td>
                     <td>
                         <div class="form-group">
-                            <input type="checkbox" value="@item.VoorstellingsNr" />
+                            <input type="checkbox" name="@item.VoorstellingsNr" />
                         </div>
                     </td>
                 </tr>
@@ -84,10 +92,10 @@
 
     </table>
 }
-    <div class="lead alert alert-info">
-        @foreach (var item in Model)
-        {
-            ViewBag.Prijs = ViewBag.Prijs + item.Prijs;
-        }
-        <p>Te betalen: @ViewBag.Prijs</p>
-    </div>
+<div class="lead alert alert-info">
+    @foreach (var item in Model)
+    {
+        ViewBag.Prijs = ViewBag.Prijs + (item.Prijs * decimal.Parse(Session[item.VoorstellingsNr.ToString()].ToString()));
+    }
+    <p>Te betalen: @decimalDisplay((decimal)ViewBag.Prijs)</p>
+</div>
