@@ -10,6 +10,11 @@
 
 @{
     ViewBag.Title = "Mandje";
+    AjaxOptions ajaxOpts = new AjaxOptions
+    {
+        UpdateTargetId = "update",
+        Url = Url.Action("PartialVerwijderMandje")
+    };
 }
 
 <div class="jumbotron">
@@ -22,7 +27,18 @@
 <div class="lead alert alert-info">
     <p>Inhoud van uw winkelmandje</p>
 </div>
-@using (Html.BeginForm("VerwijderVoorstellingMandje", "Home", FormMethod.Post))
+
+@using (Ajax.BeginForm("Mandje", ajaxOpts))
+{
+    <div id="update">
+        @Html.Action("PartialVerwijderMandje")
+    </div>
+    <div style="position:relative">
+        <input type="submit" value="Selectie verwijderen" class="btn" style="position:absolute; top:-120px; right:0;"/>
+    </div>
+}
+
+@*@using (Html.BeginForm("VerwijderVoorstellingMandje", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -98,4 +114,4 @@
         ViewBag.Prijs = ViewBag.Prijs + (item.Prijs * decimal.Parse(Session[item.VoorstellingsNr.ToString()].ToString()));
     }
     <p>Te betalen: @decimalDisplay((decimal)ViewBag.Prijs)</p>
-</div>
+</div>*@

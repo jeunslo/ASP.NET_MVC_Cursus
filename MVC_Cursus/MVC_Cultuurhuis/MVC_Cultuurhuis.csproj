@@ -162,6 +162,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DoubleUserName.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,17 +185,18 @@
       <DependentUpon>Cultuurhuis.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeIndexViewModel.cs" />
+    <Compile Include="Models\InloggegevensVM.cs" />
     <Compile Include="Models\Klant.cs">
       <DependentUpon>Cultuurhuis.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NieuweKlantVM.cs" />
     <Compile Include="Models\Reservatie.cs">
       <DependentUpon>Cultuurhuis.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReservatieStatus.cs" />
     <Compile Include="Models\Voorstelling.cs">
       <DependentUpon>Cultuurhuis.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\VoorstellingExtension.cs" />
-    <Compile Include="Models\VoorstellingProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CultuurServices.cs" />
   </ItemGroup>
@@ -207,7 +209,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\bevestig.png" />
     <Content Include="Images\mandje.png" />
+    <Content Include="Images\nieuweklant.png" />
     <Content Include="Images\reserveren.png" />
     <Content Include="Images\voorstellingen.png" />
     <Content Include="Models\Cultuurhuis.Context.tt">
@@ -233,11 +237,14 @@
       <DependentUpon>Cultuurhuis.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\genrebutton.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -261,6 +268,12 @@
     <Content Include="Views\Shared\DisplayTemplates\Decimal.cshtml" />
     <Content Include="Views\Home\Reserveren.cshtml" />
     <Content Include="Views\Home\Mandje.cshtml" />
+    <Content Include="Views\Home\Kassa.cshtml" />
+    <Content Include="Views\Home\Registreer.cshtml" />
+    <Content Include="Views\Home\Bevestigen.cshtml" />
+    <Content Include="Views\Home\GenreLijst.cshtml" />
+    <Content Include="Views\Home\GetVoorstellingenGenre.cshtml" />
+    <Content Include="Views\Home\PartialVerwijderMandje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

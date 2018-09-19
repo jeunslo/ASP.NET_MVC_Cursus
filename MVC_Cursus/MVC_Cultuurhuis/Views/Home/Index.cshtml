@@ -1,40 +1,54 @@
-﻿@model MVC_Cultuurhuis.Models.HomeIndexViewModel
-@{
+﻿@model int?
+@{ 
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
     <h1>Het Cultuurhuis <img src="~/Images/voorstellingen.png" /></h1>
+    @if (ViewBag.Mandje)
+    {
+        <p>
+            <a href="@Url.Action("Mandje", "Home")" class="btn btn-primary btn-lg">Winkelmandje &raquo;</a>
+            <a href="@Url.Action("Kassa", "Home")" class="btn btn-primary btn-lg">Kassa &raquo;</a>
+        </p>
+    }
 </div>
 
-@if (Model.Genre == null)
+@if (!Model.HasValue)
 {
     <br />
-    <div class="lead alert alert-info">
+    <div id="kiesgenre" class="lead alert alert-info">
         <p>Kies een voorstellingsgenre</p>
     </div>
 }
 <br />
 
-<ul class="nav nav-pills">
+@*<ul class="nav nav-pills">
     @foreach (var item in Model.GenreList)
     {
         var url = Url.Action("Index", "Home", new { id = item.GenreNr });
-        if (Model.Genre == item)
+        if (Model.Genre != null && Model.Genre.GenreNaam.Equals(item.GenreNaam))
         {
-            <li role="presentation" class="active"><a href="@url">@item.GenreNaam</a></li>
+            <li role="presentation" class="active"><a href="@Url">@item.GenreNaam</a></li>
         }
         else
         {
-            <li role="presentation"><a href="@url">@item.GenreNaam</a></li>
+            <li role="presentation"><a href="@Url">@item.GenreNaam</a></li>
         }
     }
-</ul>
+</ul>*@
 
-<br />
-@if (Model.Genre != null)
+<div>@Html.Action("GenreLijst", new { id = Model })</div>
+
+<div id="genreUpdate">
+    @if (Model.HasValue)
+    {
+        @Html.Action("GetVoorstellingenGenre", new { id = Model })
+    }
+</div>
+@*@if (Model.Genre != null)
 {
-    if (Model.VoorstellingsList.Count != 0)
+    if (Model.VoorstellingsList.Count > 0)
     {
         <div>
             <table class="table">
@@ -75,4 +89,4 @@
     {
         <div class="lead alert alert-warning">Er zijn geen voorstellingen van dit genre beschikbaar.</div>
     }
-}
+}*@

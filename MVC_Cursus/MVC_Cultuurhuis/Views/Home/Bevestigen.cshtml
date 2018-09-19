@@ -1,0 +1,118 @@
+﻿@model MVC_Cultuurhuis.Models.ReservatieStatus
+@helper findPlaatsen(string nr)
+{
+int plaats = Model.Reservaties.Where(x => x.VoorstellingsNr.ToString() == nr).FirstOrDefault().Plaatsen;
+    <span>@plaats</span>
+}
+@{
+    ViewBag.Title = "Bevestigen";
+}
+
+<div class="jumbotron">
+    <h1>Het Cultuurhuis <img src="~/Images/bevestig.png" /></h1>
+    <p>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg">Tickets kiezen &raquo;</a>
+    </p>
+</div>
+
+@if (Model.GelukteReservaties.Count > 0)
+{
+    <div class="lead alert alert-success">
+        Gelukte reserveringen
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>
+                    Datum
+                </td>
+                <td>
+                    Titel
+                </td>
+                <td>
+                    Uitvoerders
+                </td>
+                <td>
+                    Prijs
+                </td>
+                <td>
+                    Plaatsen
+                </td>
+            </tr>
+        </thead>
+        <thead>
+            @foreach (var item in Model.GelukteReservaties)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Datum)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Titel)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Uitvoerders)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Prijs)
+                </td>
+                <td>
+                    @findPlaatsen(item.VoorstellingsNr.ToString())
+                </td>
+            </tr>
+            }
+        </thead>
+    </table>
+}
+
+@if (Model.MislukteReservaties.Count > 0)
+{
+    <div class="lead alert alert-danger">
+        Mislukte reserveringen
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>
+                    Datum
+                </td>
+                <td>
+                    Titel
+                </td>
+                <td>
+                    Uitvoerders
+                </td>
+                <td>
+                    Prijs
+                </td>
+                <td>
+                    Plaatsen
+                </td>
+            </tr>
+        </thead>
+        <thead>
+            @foreach (var item in Model.MislukteReservaties)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Datum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Titel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Uitvoerders)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Prijs)
+                    </td>
+                    <td>
+                        @Session[item.VoorstellingsNr.ToString()]
+                    </td>
+                </tr>
+            }
+        </thead>
+    </table>
+}
+
+

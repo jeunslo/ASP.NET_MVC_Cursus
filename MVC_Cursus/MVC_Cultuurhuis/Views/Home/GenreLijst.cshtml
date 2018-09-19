@@ -1,0 +1,17 @@
+﻿@using MVC_Cultuurhuis.Models
+@model List<Genre>
+<ul class="nav nav-pills">
+    @foreach (var item in Model)
+    {      
+        <li onclick="toggleClass(this)" @if(ViewBag.Id == item.GenreNr) { <text>class="active"</text> }>
+            @Ajax.ActionLink(item.GenreNaam, "Index",
+                            new { id = item.GenreNr },
+                            new AjaxOptions
+                            {
+                                UpdateTargetId = "genreUpdate",
+                                Url = Url.Action("GetVoorstellingenGenre", new { id = item.GenreNr })
+                            })
+        </li>
+    }
+</ul>
+

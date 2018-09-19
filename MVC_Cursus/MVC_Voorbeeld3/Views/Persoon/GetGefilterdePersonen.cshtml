@@ -1,0 +1,11 @@
+﻿@using MVC_Voorbeeld3.Models
+@model IEnumerable<Persoon>
+
+@foreach (Persoon p in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(m => p.Voornaam)</td>
+        <td>@Html.DisplayFor(m => p.Familienaam)</td>
+        <td>@Html.DisplayFor(m => p.Geslacht)</td>
+    </tr>
+}

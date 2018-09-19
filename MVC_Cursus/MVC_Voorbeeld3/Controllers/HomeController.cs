@@ -69,5 +69,10 @@ namespace MVC_Voorbeeld3.Controllers
 
             return View();
         }
+
+        public PartialViewResult GetTime()
+        {
+            return PartialView(DateTime.Now);
+        }
     }
 }

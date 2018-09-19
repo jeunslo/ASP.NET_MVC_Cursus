@@ -1,0 +1,82 @@
+﻿@using MVC_Cultuurhuis.Models
+@model List<Voorstelling>
+@helper decimalDisplay(decimal prijs)
+{
+    var formatProvider = new System.Globalization.CultureInfo("nl-BE");
+    formatProvider.NumberFormat.CurrencyPositivePattern = 2;
+    formatProvider.NumberFormat.CurrencyNegativePattern = 2;
+    formatProvider.NumberFormat.CurrencyDecimalSeparator = ",";
+    <span>@prijs.ToString("C", formatProvider)</span>
+}
+
+
+@Html.AntiForgeryToken()
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Datum
+            </th>
+            <th>
+                Titel
+            </th>
+            <th>
+                Uitvoerders
+            </th>
+            <th>
+                Prijs
+            </th>
+            <th>
+                Plaatsen
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Uitvoerders)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prijs)
+
+                </td>
+                <td>
+                    @Session[item.VoorstellingsNr.ToString()]
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="checkbox" name="@item.VoorstellingsNr" />
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tfoot>
+
+</table>
+
+<div class="lead alert alert-info" style="margin-top:60px;">
+    @foreach (var item in Model)
+    {
+        ViewBag.Prijs = ViewBag.Prijs + (item.Prijs * decimal.Parse(Session[item.VoorstellingsNr.ToString()].ToString()));
+    }
+    <p>Te betalen: @decimalDisplay((decimal)ViewBag.Prijs)</p>
+</div>
