@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCBierenSecurityAPP", "MVC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Cultuurhuis", "MVC_Cultuurhuis\MVC_Cultuurhuis.csproj", "{CBD1DF01-2AF7-4DAC-AA85-4DD7FA5926AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_Test", "MVC_Test\MVC_Test.csproj", "{D5164C26-71FA-4750-BAF9-8BB68E931662}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{CBD1DF01-2AF7-4DAC-AA85-4DD7FA5926AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBD1DF01-2AF7-4DAC-AA85-4DD7FA5926AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBD1DF01-2AF7-4DAC-AA85-4DD7FA5926AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5164C26-71FA-4750-BAF9-8BB68E931662}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5164C26-71FA-4750-BAF9-8BB68E931662}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5164C26-71FA-4750-BAF9-8BB68E931662}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5164C26-71FA-4750-BAF9-8BB68E931662}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

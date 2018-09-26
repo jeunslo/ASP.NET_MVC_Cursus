@@ -1,0 +1,13 @@
+﻿@using MVC_Test.Models
+@model List<Genre>
+<p><b>Klik op het gewenste GENRE</b></p>
+
+<div>
+    @foreach (var item in Model)
+    {
+        <a>
+            @Ajax.ActionLink(item.GenreSoort, "GenreDetail", new { gekozenGenreNr = item.GenreNr },
+                                new AjaxOptions { UpdateTargetId = "lijstOfDetail", Url = Url.Action("GenreDetail", new { gekozenGenreNr = item.GenreNr }) })
+        </a> 
+    }
+</div> 

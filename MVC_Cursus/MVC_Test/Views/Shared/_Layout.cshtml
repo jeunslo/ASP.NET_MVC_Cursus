@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <img src="~/Images/videoVerhuur.jpg" height="110" width="110" />
+    <div>
+        <br />
+    </div> 
+    <div id="divToReload">
+        @if (Session["user"] != null)
+        {
+            MVC_Test.Models.Klant klant = Session["user"] as MVC_Test.Models.Klant;
+            <p>Welkom, @klant.Voornaam @klant.Naam</p>
+        }
+        else
+        {
+            <p>Eerst aanmelden om te kunnen huren!</p>
+        }
+    </div>
+        <div id="divAfrekenenToReload">
+            <a href="@Url.Action("Uitloggen", "Home")"><u>Uitloggen en naar beginpagina</u>&nbsp;</a>
+            @if (Session["mandje"] != null)
+            {
+                <u>@Html.ActionLink("Afrekenen", "AfrekenenOverzicht")</u>
+            }
+        </div>
+    <div class="container body-content">
+        @RenderBody()
+        
+        <footer>
+            
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CBD1DF01-2AF7-4DAC-AA85-4DD7FA5926AB}</ProjectGuid>
+    <ProjectGuid>{D5164C26-71FA-4750-BAF9-8BB68E931662}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MVC_Cultuurhuis</RootNamespace>
-    <AssemblyName>MVC_Cultuurhuis</AssemblyName>
+    <RootNamespace>MVC_Test</RootNamespace>
+    <AssemblyName>MVC_Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -153,52 +153,43 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_GlobalResources\Messages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Messages.resx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DoubleUserName.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Cultuurhuis.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Cultuurhuis.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Cultuurhuis.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Cultuurhuis.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Cultuurhuis.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Cultuurhuis.edmx</DependentUpon>
+    <Compile Include="Models\AfrekenenOverzicht.cs" />
+    <Compile Include="Models\Film.cs">
+      <DependentUpon>VIdeoVerhuur.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Genre.cs">
-      <DependentUpon>Cultuurhuis.tt</DependentUpon>
+      <DependentUpon>VIdeoVerhuur.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HomeIndexViewModel.cs" />
-    <Compile Include="Models\InloggegevensVM.cs" />
     <Compile Include="Models\Klant.cs">
-      <DependentUpon>Cultuurhuis.tt</DependentUpon>
+      <DependentUpon>VIdeoVerhuur.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NieuweKlantVM.cs" />
-    <Compile Include="Models\Reservatie.cs">
-      <DependentUpon>Cultuurhuis.tt</DependentUpon>
+    <Compile Include="Models\Verhuur.cs">
+      <DependentUpon>VIdeoVerhuur.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ReservatieStatus.cs" />
-    <Compile Include="Models\Voorstelling.cs">
-      <DependentUpon>Cultuurhuis.tt</DependentUpon>
+    <Compile Include="Models\VIdeoVerhuur.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VIdeoVerhuur.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VIdeoVerhuur.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VIdeoVerhuur.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VIdeoVerhuur.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VIdeoVerhuur.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CultuurServices.cs" />
+    <Compile Include="Services\VideoVerhuurServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -209,35 +200,31 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\bevestig.png" />
-    <Content Include="Images\mandje.png" />
-    <Content Include="Images\nieuweklant.png" />
-    <Content Include="Images\reserveren.png" />
-    <Content Include="Images\voorstellingen.png" />
-    <Content Include="Models\Cultuurhuis.Context.tt">
+    <Content Include="Images\videoVerhuur.jpg" />
+    <Content Include="Models\VIdeoVerhuur.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Cultuurhuis.Context.cs</LastGenOutput>
-      <DependentUpon>Cultuurhuis.edmx</DependentUpon>
+      <LastGenOutput>VIdeoVerhuur.Context.cs</LastGenOutput>
+      <DependentUpon>VIdeoVerhuur.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\Cultuurhuis.tt">
+    <Content Include="Models\VIdeoVerhuur.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Cultuurhuis.edmx</DependentUpon>
-      <LastGenOutput>Cultuurhuis.cs</LastGenOutput>
+      <DependentUpon>VIdeoVerhuur.edmx</DependentUpon>
+      <LastGenOutput>VIdeoVerhuur.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Cultuurhuis.edmx">
+    <EntityDeploy Include="Models\VIdeoVerhuur.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Cultuurhuis.Designer.cs</LastGenOutput>
+      <LastGenOutput>VIdeoVerhuur.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Cultuurhuis.edmx.diagram">
-      <DependentUpon>Cultuurhuis.edmx</DependentUpon>
+    <Content Include="Models\VIdeoVerhuur.edmx.diagram">
+      <DependentUpon>VIdeoVerhuur.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\genrebutton.js" />
+    <Content Include="Scripts\displaybutton.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -262,17 +249,18 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Decimal.cshtml" />
-    <Content Include="Views\Home\Reserveren.cshtml" />
+    <Content Include="Views\Home\VerhuurLink.cshtml" />
+    <Content Include="Views\Home\FoutieveLink.cshtml" />
+    <Content Include="Views\Home\GenreView.cshtml" />
+    <Content Include="Views\Home\GenreDetail.cshtml" />
+    <Content Include="Views\Home\WinkelMandje.cshtml" />
+    <Content Include="Views\Home\VerwijderFilmBevestiging.cshtml" />
+    <Content Include="Views\Home\AfrekenenOverzicht.cshtml" />
+    <Content Include="Views\Home\InloggenAjax2.cshtml" />
+    <Content Include="Views\Home\GenreList.cshtml" />
     <Content Include="Views\Home\Mandje.cshtml" />
-    <Content Include="Views\Home\Kassa.cshtml" />
-    <Content Include="Views\Home\Registreer.cshtml" />
-    <Content Include="Views\Home\Bevestigen.cshtml" />
-    <Content Include="Views\Home\GenreLijst.cshtml" />
-    <Content Include="Views\Home\GetVoorstellingenGenre.cshtml" />
-    <Content Include="Views\Home\PartialVerwijderMandje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -293,12 +281,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\Messages.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -315,9 +297,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57195</DevelopmentServerPort>
+          <DevelopmentServerPort>53682</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57195/</IISUrl>
+          <IISUrl>http://localhost:53682/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

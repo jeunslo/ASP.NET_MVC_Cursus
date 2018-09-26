@@ -1,0 +1,23 @@
+﻿@{ 
+    AjaxOptions ajaxOpts = new AjaxOptions
+    {
+        UpdateTargetId = "login",
+        Url = Url.Action("InloggenAjax2")
+    };
+}
+<div>
+    @using (Ajax.BeginForm(ajaxOpts))
+    {
+        <label for="naam">Naam</label>
+        <div>
+            <input type="text" required="required" id="naamId" name="naam" />
+        </div>
+        <label for="postcode">Postcode</label>
+        <div>
+            <input type="number" required="required" id="postcodeId" name="postcode" />
+        </div>
+        <br />
+        <button type="submit" name="Aanmelden" value="Aanmelden">Aanmelden</button>
+    }
+</div>
+

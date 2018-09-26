@@ -1,0 +1,9 @@
+﻿@model decimal
+@{
+    var formatProvider = new System.Globalization.CultureInfo("nl-BE");
+    formatProvider.NumberFormat.CurrencyPositivePattern = 2;
+    formatProvider.NumberFormat.CurrencyNegativePattern = 2;
+    formatProvider.NumberFormat.CurrencyDecimalSeparator = ",";
+    @Model.ToString("C", formatProvider)
+}
+

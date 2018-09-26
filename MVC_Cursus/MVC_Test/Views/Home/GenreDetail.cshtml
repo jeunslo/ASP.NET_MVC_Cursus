@@ -1,0 +1,52 @@
+﻿@using MVC_Test.Models
+@model List<Film>
+@{
+    ViewBag.Title = "GenreDetail";
+}
+
+<h2>@ViewBag.GenreSoort</h2>
+
+<table class="table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Titel
+            </th>
+            <th>
+                Prijs
+            </th>
+            <th>
+                In Vooraad
+            </th>
+            <th>
+                Huren
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(x => item.Titel)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item.Prijs)
+                </td>
+                <td align="center">
+                    @Html.DisplayFor(x => item.InVoorraad)
+                </td>
+                <td>
+                    @if (item.InVoorraad > 0)
+                    {
+                        @Html.ActionLink("Huren", "Mandje", new { bandNr = item.BandNr })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Ajax.ActionLink("Terug naar genre overzicht", "GenreView",
+                                new AjaxOptions { UpdateTargetId = "lijstOfDetail", Url = Url.Action("GenreList") })
+

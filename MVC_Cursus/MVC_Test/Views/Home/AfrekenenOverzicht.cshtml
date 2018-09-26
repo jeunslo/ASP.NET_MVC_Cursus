@@ -1,0 +1,56 @@
+﻿@using MVC_Test.Models
+@model AfrekenenOverzicht
+@helper decimalDisplay(decimal prijs)
+{
+    var formatProvider = new System.Globalization.CultureInfo("nl-BE");
+    formatProvider.NumberFormat.CurrencyPositivePattern = 2;
+    formatProvider.NumberFormat.CurrencyNegativePattern = 2;
+    formatProvider.NumberFormat.CurrencyDecimalSeparator = ",";
+    <span>@prijs.ToString("C", formatProvider)</span>
+}
+
+@{
+    ViewBag.Title = "AfrekenenOverzicht";
+}
+
+<h2>Afrekenen</h2>
+<table class="table-striped table-bordered">
+    <thead>
+        <tr>
+            <th align="center">
+                Titel
+            </th>
+            <th>
+                Prijs
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.FilmList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(x => item.Titel)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item.Prijs)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th align="center">
+                Totaal:
+            </th>
+            <th>
+                @decimalDisplay(Model.Prijs)
+            </th>
+        </tr>
+    </tfoot>
+</table>
+<br />
+<p>wordt gefactureerd aan</p>
+<p>@Model.Naam</p>
+<p>@Model.Straat</p>
+<p>@Model.Gemeente</p>

@@ -1,0 +1,14 @@
+﻿@using MVC_Test.Models
+@model Film
+@{
+    ViewBag.Title = "Bevestiging";
+}
+
+<h2>Verwijder gehuurde film</h2>
+<br />
+<p>Ben je zeker dat je "@Model.Titel" niet wil huren?</p>
+<div>
+    <u>@Html.ActionLink("Ja", "VerwijderFilm", new { bandNr = Model.BandNr })</u>
+    <u>@Ajax.ActionLink("Nee", "Mandje", new AjaxOptions { UpdateTargetId = "lijstOfVerwijderen", Url = Url.Action("WinkelMandje") })</u>
+</div>
+
