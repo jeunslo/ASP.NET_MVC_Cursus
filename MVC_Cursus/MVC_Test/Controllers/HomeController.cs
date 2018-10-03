@@ -1,4 +1,5 @@
-﻿using MVC_Test.Models;
+﻿using MVC_Test.Filters;
+using MVC_Test.Models;
 using MVC_Test.Services;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,7 @@ namespace MVC_Test.Controllers
             return RedirectToAction("Index");
         }
 
+        [AuthorizeActionFilter]
         public ActionResult GenreView()
         {
             return View();
@@ -75,6 +77,7 @@ namespace MVC_Test.Controllers
                 return View(filmList);
         }
 
+        [AuthorizeActionFilter]
         public ActionResult Mandje()
         {
             return View();
@@ -100,6 +103,7 @@ namespace MVC_Test.Controllers
             return PartialView(filmList);
         }
 
+        [AuthorizeActionFilter]
         public ActionResult VerwijderFilmBevestiging(int bandNr)
         {
             Film film = service.FindFilmByBandNr(bandNr);
