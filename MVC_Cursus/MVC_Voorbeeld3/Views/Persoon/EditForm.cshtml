@@ -4,6 +4,14 @@
     ViewBag.Title = "EditForm";
 }
 
+<script>
+    $(".datepicker").datepicker({ 
+   changeMonth: true,
+   changeYear: true,
+   dateFormat: 'dd-mm-yy' 
+});
+</script>
+
 <h2>EditForm</h2>
 
 @using (Html.BeginForm("Edit", "Persoon", FormMethod.Post))
@@ -59,7 +67,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Geboren, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Geboren, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Geboren)
                 @Html.ValidationMessageFor(model => model.Geboren, "", new { @class = "text-danger" })
             </div>
         </div>

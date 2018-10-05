@@ -13,6 +13,7 @@ namespace MVC_Voorbeeld3.Models
 
         public string Voornaam { get; set; }
 
+        //[RegularExpression(@"\d{3}-\d{7}-\d{2}", ErrorMessage = "Rekeningnummer verkeerd")]
         [StringLength(255, ErrorMessage = "Max. {1} tekens voor {0}")]
         public string Familienaam { get; set; }
 
@@ -25,12 +26,12 @@ namespace MVC_Voorbeeld3.Models
         [Display(Name = "Wachtwoord")]
         [DataType(DataType.Password)]
         [Required(ErrorMessage ="Wachtwoord verplicht in te vullen.")]
-        [StringLength(20, MinimumLength = 8, ErrorMessage = "Het wachtwoord bevat min. {2}, max. {1} tekens")]
+        //[StringLength(20, MinimumLength = 8, ErrorMessage = "Het wachtwoord bevat min. {2}, max. {1} tekens")]
         public string Paswoord { get; set; }
 
-        [DataType(DataType.Password)]
-        [Compare("Paswoord", ErrorMessage = "{0} verschilt van {1}")]
-        public string HerhaalPaswoord { get; set; }
+        //[DataType(DataType.Password)]
+        //[Compare("Paswoord", ErrorMessage = "{0} verschilt van {1}")]
+        //public string HerhaalPaswoord { get; set; }
 
         [DisplayFormat(DataFormatString="{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]

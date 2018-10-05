@@ -12,7 +12,7 @@
         htmlAttributes = new RouteValueDictionary();
     }
     htmlAttributes.Add("type", "date");
-    String format = (Request.UserAgent != null && Request.UserAgent.Contains("Chrome")) ? "{0:yyyy-MM-dd}" : "{0:d}";
+    String format = "{0:yyyy-MM-dd}";
     @Html.TextBox("", Model, format, htmlAttributes)
 }
 
